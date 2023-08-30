@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.member">
+
+	<select id="idCheck" parameterType="String" resultType="int">
+      <![CDATA[
+         select id from member where id=#{id}
+      ]]>
+	</select>
+	
+	<select id="getMember" parameterType="String" resultType="memberVO">
+      <![CDATA[
+         select * from member where id=#{id}
+      ]]>
+	</select>
+	
+	<insert id="insertMember" parameterType="memberVO">
+		<![CDATA[
+			insert into member(id, pwd, name, zip_Num, address, phone, email) 
+			values (#{id}, #{pwd}, #{name}, #{zip_Num}, #{address}, #{phone}, #{email})
+		]]>
+	</insert>
+	
+	<select id="findID" resultType="String" parameterType="java.util.Map">
+      <![CDATA[
+         SELECT id FROM member WHERE name = #{name} AND email = #{email}
+      ]]>
+	</select>
+	
+	<select id="findPW" resultType="String" parameterType="java.util.Map">
+      <![CDATA[
+          SELECT pwd FROM member WHERE id = #{id} AND name = #{name} AND email = #{email}
+      ]]>
+	</select>
+	
+	<select id="listMember" resultType="memberVO">
+      <![CDATA[
+          select * from member where name like '%'||#{name}||'%' order by indate desc
+      ]]>
+	</select>
+	
+</mapper>

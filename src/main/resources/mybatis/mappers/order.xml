@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.order">
+
+	<resultMap id="orderResult" type="OrderVO">
+		<result property="odseq" column="odseq" />
+		<result property="oseq" column="oseq" />
+		<result property="id" column="id" />
+		<result property="indate" column="indate" />
+		<result property="mname" column="mname" />
+		<result property="zip_num" column="zip_num" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="pseq" column="pseq" />
+		<result property="pname" column="pname" />
+		<result property="quantity" column="quantity" />
+		<result property="price2" column="price2" />
+		<result property="result" column="result" />
+	</resultMap>
+
+
+	<select id="selectMaxOseq" resultType="Int">
+	   <![CDATA[ 
+	   select max(oseq) from orders
+	  ]]>
+	</select>
+
+	<insert id="insertOrder" parameterType="String">
+	   <![CDATA[ 
+	   insert into orders (oseq, id) values (orders_seq.nextval, #{id})
+	     ]]>
+	</insert>
+
+	<insert id="insertOrderDetail" parameterType="map">
+	   <![CDATA[ 
+	   insert into order_detail (odseq, oseq, pseq, quantity) values (order_detail_seq.nextval, #{oseq}, #{pseq}, #{quantity})
+     ]]>
+	</insert>
+
+	<update id="updateCartResult" parameterType="map">
+	   <![CDATA[ 
+	 update cart set result=2 where cseq=#{cseq}
+     ]]>
+	</update>
+
+	<select id="listOrderById" resultType="orderVO" parameterType="map">
+      <![CDATA[
+       select * from order_view where id=#{id} and 
+       ]]>
+		<choose>
+			<when test="result != '' and result != null">
+				result like '%' ||#{result}|| '%'
+			</when>
+		</choose>
+		and oseq=#{oseq}
+	</select>
+
+	<select id="selectSeqOrderIng" resultType="int" parameterType="String">
+      <![CDATA[
+      select distinct oseq from order_view where id=#{id} and result='1' order by oseq desc
+      ]]>
+	</select>
+	
+	<select id="selectSeqOrderIng2" resultType="int" parameterType="String">
+      <![CDATA[
+      select distinct oseq from order_view where id=#{id} and result='2' order by oseq desc
+      ]]>
+	</select>
+
+	<select id="selectAll" resultType="OrderVO" parameterType="String">
+      <![CDATA[
+         select * from order_view order by odseq
+      ]]>
+	</select>
+	
+	<select id="selectNameList" resultType="OrderVO" parameterType="String">
+      <![CDATA[
+         select * from order_view where mname=#{mname} order by odseq
+      ]]>
+	</select>
+	
+	<update id="updateOrderResult" parameterType="String" >
+		<![CDATA[
+			update order_detail set result='2' where odseq=#{odseq}
+		]]>
+	
+	</update>
+	
+</mapper>

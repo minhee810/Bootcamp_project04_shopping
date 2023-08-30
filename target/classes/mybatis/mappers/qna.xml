@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.qna">
+	<select id="selectAll" resultType="QnaVO">
+      <![CDATA[
+         select * from qna order by qseq
+      ]]>
+	</select>
+
+
+	<select id="selectAllList" resultType="QnaVO" parameterType="String">
+      <![CDATA[
+         select * from qna where id=#{id} order by qseq
+      ]]>
+	</select>
+	
+	<select id="selectOne" resultType="QnaVO"  parameterType="int" >
+      <![CDATA[
+         select * from qna where qseq=#{qseq}		
+      ]]>
+	 </select>
+    
+    <insert id="insertQnA" parameterType="QnaVO" >
+      <![CDATA[
+         insert into qna (qseq, subject, content, id) values(qna_seq.nextval, #{subject}, #{content}, #{id})		
+      ]]>
+	 </insert>
+	 
+	 <insert id="deleteQnA" parameterType="int" >
+      <![CDATA[
+         delete from qna where qseq=#{qseq}		
+      ]]>
+	 </insert>
+  
+  
+  	<update id="updateQnA" parameterType="QnaVO" >
+      <![CDATA[
+         update qna set reply=#{reply}, rep='2' where qseq=#{qseq}		
+      ]]>
+	 </update>
+</mapper>

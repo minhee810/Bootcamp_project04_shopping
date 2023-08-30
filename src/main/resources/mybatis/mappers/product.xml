@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.product">
+
+	<resultMap id="productResult" type="productVO">
+		<result property="pseq" column="pseq" />
+		<result property="name" column="name" />
+		<result property="kind" column="kind" />
+		<result property="price1" column="price1" />
+		<result property="price2" column="price2" />
+		<result property="price3" column="price3" />
+		<result property="content" column="content" />
+		<result property="image" column="image" />
+		<result property="useyn" column="useyn" />
+		<result property="indate" column="indate" />
+	</resultMap>
+
+	<select id="listNewProduct" resultType="productVO">
+		<![CDATA[ 
+			select * from new_pro_view
+	  	]]>
+	</select>
+
+	<select id="listBestProduct" resultType="productVO">
+		<![CDATA[ 
+			select * from best_pro_view
+	  	]]>
+	</select>
+
+	<select id="getProduct" resultType="productVO" parameterType="String">
+		<![CDATA[ 
+			select * from product where pseq=#{pseq}
+	  	]]>
+	</select>
+
+	<select id="listKindProduct" resultType="productVO"
+		parameterType="String">
+		<![CDATA[ 
+			 select * from product where kind=#{kind}
+	  	]]>
+	</select>
+	
+	<select id="totalRecord" resultType="int" parameterType="String">
+      <![CDATA[
+         select count(*) from product where name like '%'||#{name}||'%'
+      ]]>
+	</select>
+	
+	<insert id="insertProduct" parameterType="productVO">
+		<![CDATA[
+			insert into product (pseq, kind, useyn, bestyn, name, price1, price2, price3, content, image) 
+			values (product_seq.nextval, #{kind}, #{useyn}, #{bestyn}, #{name}, #{price1}, #{price2}, #{price3}, #{content}, #{image})
+		]]>
+	</insert>
+	
+	<update id="updateProduct" parameterType="productVO">
+		<![CDATA[
+			update product set kind=#{kind}, useyn=#{useyn}, name=#{name}, price1=#{price1}, 
+			price2=#{price2}, price3=#{price3}, content=#{content}, image=#{image}, bestyn=#{bestyn} 
+			where pseq=#{pseq}
+		]]>
+	</update>
+	
+</mapper>

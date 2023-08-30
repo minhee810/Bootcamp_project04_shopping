@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.cart">
+
+	<resultMap id="cartResult" type="CartVO">
+		<result property="cseq" column="cseq" />
+		<result property="id" column="id" />
+		<result property="pseq" column="pseq" />
+		<result property="mname" column="mname" />
+		<result property="pname" column="pname" />
+		<result property="quantity" column="quantity" />
+		<result property="price2" column="price2" />
+		<result property="indate" column="indate" />
+	</resultMap>
+
+	<select id="listCart" resultType="cartVO" parameterType="String">
+      <![CDATA[
+			select * from cart_view where id = #{id} order by cseq desc
+      ]]>
+	</select>
+
+	<insert id="insertCart" parameterType="CartVO">
+      <![CDATA[
+			insert into cart (cseq, id, pseq, quantity) values (cart_seq.nextval, #{id}, #{pseq}, #{quantity})
+      ]]>
+	</insert>
+
+
+	<select id="deleteCart" resultType="cartVO" parameterType="Int">
+      <![CDATA[
+			delete cart where cseq=#{cseq}
+      ]]>
+	</select>
+
+
+</mapper>
