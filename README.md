@@ -36,9 +36,6 @@
 2. AdminQnaController
 3. AdminOrderController
    <br>
-   
-- 김훈호 <br>
-  코로나로 인한 불참 ...
   
 - 이경승
 1. MemberController
