@@ -1,4 +1,4 @@
-# 4차 미니프로젝트 : Shopping mall 구조 Spring mvc 구조로 리팩토링 
+# 4차 미니프로젝트 
 
 ### 🛠️ Tech Stack
 [![Java](https://img.shields.io/badge/-Java-007396?style=flat-square&logo=Java&logoColor=white)](https://www.java.com/)
@@ -8,6 +8,7 @@
 [![JDBC](https://img.shields.io/badge/-JDBC-007396?style=flat-square&logo=Java&logoColor=white)](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)
 
 <br>
+
 
 ### 📝 프로젝트 소개
 : 기존의 쇼핑몰을 MVC패턴으로 구성해뒀던 것을 sts를 활용하여 스프링 구조로 변경하여 코드의 유지보수성을 향상 시키고자 함. 
