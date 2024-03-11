@@ -1,5 +1,15 @@
 # 4차 미니프로젝트
 
+### 🛠️ Tech Stack
+[![Java](https://img.shields.io/badge/-Java-007396?style=flat-square&logo=Java&logoColor=white)](https://www.java.com/)
+[![Spring](https://img.shields.io/badge/-Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white)](https://spring.io/)
+[![Spring Tool Suite](https://img.shields.io/badge/-Spring_Tool_Suite-6DB33F?style=flat-square&logo=Eclipse&logoColor=white)](https://spring.io/tools)
+[![MyBatis](https://img.shields.io/badge/-MyBatis-1F262D?style=flat-square&logo=MyBatis&logoColor=blue)](https://mybatis.org/)
+[![JDBC](https://img.shields.io/badge/-JDBC-007396?style=flat-square&logo=Java&logoColor=white)](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)
+
+
+
+
 <br>
 
 ### 프로젝트 소개
