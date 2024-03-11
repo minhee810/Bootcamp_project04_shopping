@@ -1,4 +1,4 @@
-# 4차 미니프로젝트
+# 4차 미니프로젝트 : Shopping mall 구조 Spring mvc 구조로 리팩토링 
 
 ### 🛠️ Tech Stack
 [![Java](https://img.shields.io/badge/-Java-007396?style=flat-square&logo=Java&logoColor=white)](https://www.java.com/)
